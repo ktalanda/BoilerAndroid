@@ -3,13 +3,12 @@ Boiler Android
 
 1. Description:
 Android Boiler Plate containing:
-* graddle configuration,
-* debug and release variants,
-* Dagger,
+ * graddle configuration,
+ * debug and release variants,
+ * Dagger,
 
 2. Configuration:
-* add following lines to your gradle config
-uration (f.e. ~/.gradle/gradle.properties):
+ * add following lines to your gradle configuration (f.e. ~/.gradle/gradle.properties):
 ```shell
 KEY_ALIAS=<your_alias>
 KEY_PASSWORD=<your_password>
