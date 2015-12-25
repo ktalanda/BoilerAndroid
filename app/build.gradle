@@ -2,6 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
+def KEY_ALIAS_APP = hasProperty('KEY_ALIAS') ? KEY_ALIAS : 'androiddebugkey'
+def KEY_PASSWORD_APP = hasProperty('KEY_PASSWORD') ? KEY_PASSWORD : 'android'
+def KEYSTORE_FILE_APP = hasProperty('KEYSTORE_FILE') ? KEYSTORE_FILE : '../dev_tools/debug.keystore'
+def KEYSTORE_PASSWORD_APP = hasProperty('KEYSTORE_PASSWORD') ? KEYSTORE_PASSWORD : 'android'
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -16,10 +21,10 @@ android {
 
     signingConfigs {
         app {
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PASSWORD
-            storeFile file(KEYSTORE_FILE)
-            storePassword KEYSTORE_PASSWORD
+            keyAlias KEY_ALIAS_APP
+            keyPassword KEY_PASSWORD_APP
+            storeFile file(KEYSTORE_FILE_APP)
+            storePassword KEYSTORE_PASSWORD_APP
         }
     }
 
