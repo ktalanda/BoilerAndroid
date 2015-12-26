@@ -52,10 +52,6 @@ android {
     lintOptions {
         abortOnError false
     }
-
-    dexOptions {
-        preDexLibraries = preDexEnabled && !travisBuild
-    }
 }
 
 dependencies {
