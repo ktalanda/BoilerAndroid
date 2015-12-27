@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
+apply from: '../config/quality.gradle'
+
 def KEY_ALIAS_APP = hasProperty('KEY_ALIAS') ? KEY_ALIAS : 'androiddebugkey'
 def KEY_PASSWORD_APP = hasProperty('KEY_PASSWORD') ? KEY_PASSWORD : 'android'
 def KEYSTORE_FILE_APP = hasProperty('KEYSTORE_FILE') ? KEYSTORE_FILE : '../dev_tools/debug.keystore'
@@ -48,10 +50,6 @@ android {
     packagingOptions {
         exclude 'LICENSE.txt'
     }
-
-    lintOptions {
-        abortOnError false
-    }
 }
 
 dependencies {
@@ -72,5 +70,5 @@ dependencies {
     androidTestCompile(
 
     )
-    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:+'
+    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.1.0'
 }

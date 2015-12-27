@@ -7,10 +7,11 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {})
+@Component(modules = { })
 public interface ApplicationComponent {
-    class Initializer {
-        public static ApplicationComponent init(Context context){
+    final class Initializer {
+        private Initializer() { }
+        public static ApplicationComponent init(Context context) {
             return DaggerApplicationComponent
                     .builder()
                     .build();
