@@ -63,7 +63,9 @@
     </module>
 
     <module name="TreeWalker">
-        <module name="VisibilityModifier" />
+        <module name="VisibilityModifier">
+            <property name="packageAllowed" value="true" />
+        </module>
         <module name="HideUtilityClassConstructor" />
 
     </module>

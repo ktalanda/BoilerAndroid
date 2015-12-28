@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!-- http://checkstyle.sf.net -->
+<?xml version="1.0"?><!-- http://checkstyle.sf.net -->
 
 <!DOCTYPE module PUBLIC
     "-//Puppy Crawl//DTD Check Configuration 1.1//EN"
@@ -63,7 +62,9 @@
     </module>
 
     <module name="TreeWalker">
-        <module name="VisibilityModifier" />
+        <module name="VisibilityModifier">
+            <property name="packageAllowed" value="true" />
+        </module>
         <module name="HideUtilityClassConstructor" />
 
     </module>
