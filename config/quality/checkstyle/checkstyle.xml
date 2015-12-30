@@ -73,7 +73,6 @@
         <module name="ModifierOrder" />
         <module name="FinalClass" />
         <module name="InnerTypeLast" />
-        <module name="InterfaceIsType" />
         <module name="ThrowsCount" />
         <module name="CovariantEquals" />
         <module name="DeclarationOrder" />

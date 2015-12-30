@@ -4,6 +4,9 @@ apply plugin: 'me.tatarka.retrolambda'
 
 apply from: '../config/quality.gradle'
 
+def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZone("UTC"))
+
 def KEY_ALIAS_APP = hasProperty('KEY_ALIAS') ? KEY_ALIAS : 'androiddebugkey'
 def KEY_PASSWORD_APP = hasProperty('KEY_PASSWORD') ? KEY_PASSWORD : 'android'
 def KEYSTORE_FILE_APP = hasProperty('KEYSTORE_FILE') ? KEYSTORE_FILE : '../dev_tools/debug.keystore'
@@ -12,14 +15,6 @@ def KEYSTORE_PASSWORD_APP = hasProperty('KEYSTORE_PASSWORD') ? KEYSTORE_PASSWORD
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
-
-    defaultConfig {
-        applicationId "pl.k2net.boilerandroid"
-        minSdkVersion 21
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
-    }
 
     signingConfigs {
         app {
@@ -30,15 +25,26 @@ android {
         }
     }
 
+    defaultConfig {
+        applicationId "pl.k2net.boilerandroid"
+        minSdkVersion 21
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        signingConfig signingConfigs.app
+
+        buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
+        buildConfigField "String", "BUILD_TIME", "\"${buildTime}\""
+    }
+
     buildTypes {
         release {
             minifyEnabled false
-            signingConfig signingConfigs.app
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             applicationIdSuffix '.debug'
-            signingConfig signingConfigs.app
         }
     }
 
@@ -68,6 +74,10 @@ dependencies {
             'com.google.dagger:dagger:2.0.2',
             'com.jakewharton:butterknife:7.0.1',
             'com.jakewharton.timber:timber:4.1.0',
+            'com.squareup.retrofit:retrofit:2.0.0-beta2',
+            'io.reactivex:rxjava:1.1.0',
+            'io.reactivex:rxandroid:1.1.0',
+            'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2',
     )
     testCompile(
             'junit:junit:4.12',
