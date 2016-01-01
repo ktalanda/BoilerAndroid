@@ -25,6 +25,7 @@ public class ActivityViewHolder {
     ActivityViewHolder withBoundViews(BaseActivity baseActivity) {
         ButterKnife.bind(this, baseActivity);
         version.setText(BuildConfig.VERSION_NAME);
+
         return this;
     }
 }

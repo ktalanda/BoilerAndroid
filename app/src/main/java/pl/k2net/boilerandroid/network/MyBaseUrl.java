@@ -6,12 +6,12 @@ import javax.inject.Inject;
 
 import retrofit.BaseUrl;
 
-public class AppUrl implements BaseUrl {
+public class MyBaseUrl implements BaseUrl {
 
     HttpUrl httpUrl;
 
     @Inject
-    public AppUrl(HttpUrl httpUrl) {
+    public MyBaseUrl(HttpUrl httpUrl) {
         this.httpUrl = httpUrl;
     }
 

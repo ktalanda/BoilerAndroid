@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="debug_drawer_title">DEBUG</string>
+    <string name="debug_drawer_title_build">BUILD:</string>
+</resources>

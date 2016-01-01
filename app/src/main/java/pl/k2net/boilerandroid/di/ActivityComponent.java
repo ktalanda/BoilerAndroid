@@ -6,7 +6,7 @@ import pl.k2net.boilerandroid.di.scope.PerActivity;
 @PerActivity
 @Component(
         dependencies = ApplicationComponent.class,
-        modules = {}
+        modules = { }
 )
 public interface ActivityComponent extends ActivityInjector {
     final class Initializer {
