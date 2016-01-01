@@ -5,21 +5,11 @@ apply from: '../config/quality.gradle'
 
 def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
 def buildTime = new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZone("UTC"))
-def generateVersion() {
-    def time = new Date().format "yyMMddHHmm"
-    def repo = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
-    return "${time}-${repo}"
-}
 
 def KEY_ALIAS_APP = hasProperty('KEY_ALIAS') ? KEY_ALIAS : 'androiddebugkey'
 def KEY_PASSWORD_APP = hasProperty('KEY_PASSWORD') ? KEY_PASSWORD : 'android'
 def KEYSTORE_FILE_APP = hasProperty('KEYSTORE_FILE') ? KEYSTORE_FILE : '../dev_tools/debug.keystore'
 def KEYSTORE_PASSWORD_APP = hasProperty('KEYSTORE_PASSWORD') ? KEYSTORE_PASSWORD : 'android'
-
-project.ext {
-    versionName = generateVersion()
-    versionCode = 1
-}
 
 android {
     compileSdkVersion 23
@@ -38,8 +28,8 @@ android {
         applicationId "pl.k2net.boilerandroid"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode project.versionCode
-        versionName project.versionName
+        versionCode 1
+        versionName "0.1.0"
 
         signingConfig signingConfigs.app
 

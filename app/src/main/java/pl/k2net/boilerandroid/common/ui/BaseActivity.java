@@ -1,5 +1,6 @@
 package pl.k2net.boilerandroid.common.ui;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 
@@ -18,10 +19,14 @@ public class BaseActivity extends AppCompatActivity
 
     private ActivityComponent activityComponent;
 
-    protected void bindContentView(int layoutRes) {
-        final ViewGroup container = appContainer.bind(this);
+    protected void bindContentView(int layoutRes, Bundle savedInstanceState) {
+        final ViewGroup container = appContainer.bind(this, savedInstanceState);
         getLayoutInflater().inflate(layoutRes, container);
         ButterKnife.bind(this, container);
+    }
+
+    protected Bundle saveInstanceState(Bundle savedInstanceState) {
+        return appContainer.saveInstanceState(savedInstanceState);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package pl.k2net.boilerandroid.common.ui;
 
+import android.os.Bundle;
 import android.view.ViewGroup;
 
 import javax.inject.Inject;
@@ -15,7 +16,13 @@ public class AppContainerImpl implements AppContainer {
     }
 
     @Override
-    public ViewGroup bind(BaseActivity baseActivity) {
+    public ViewGroup bind(BaseActivity baseActivity,
+                          Bundle savedInstanceState) {
         return ButterKnife.findById(baseActivity, android.R.id.content);
+    }
+
+    @Override
+    public Bundle saveInstanceState(Bundle savedInstanceState) {
+        return savedInstanceState;
     }
 }
