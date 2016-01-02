@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:columnCount="2"
@@ -46,12 +47,12 @@
         android:layout_width="0dp"
         android:layout_columnSpan="2"
         android:layout_gravity="start|fill_horizontal"
-        android:text="Build Information" />
+        android:text="@string/debug_drawer_build_title" />
 
     <TextView
         style="@style/Widget.App.DebugDrawer.RowTitle"
         android:layout_gravity="start|center_vertical"
-        android:text="Name" />
+        android:text="@string/debug_drawer_build_name" />
 
     <TextView
         android:id="@+id/debug_build_name"
@@ -62,7 +63,7 @@
     <TextView
         style="@style/Widget.App.DebugDrawer.RowTitle"
         android:layout_gravity="start|center_vertical"
-        android:text="Code" />
+        android:text="@string/debug_drawer_build_code" />
 
     <TextView
         android:id="@+id/debug_build_code"
@@ -73,7 +74,7 @@
     <TextView
         style="@style/Widget.App.DebugDrawer.RowTitle"
         android:layout_gravity="start|center_vertical"
-        android:text="SHA" />
+        android:text="@string/debug_drawer_build_sha" />
 
     <TextView
         android:id="@+id/debug_build_sha"
@@ -84,7 +85,7 @@
     <TextView
         style="@style/Widget.App.DebugDrawer.RowTitle"
         android:layout_gravity="start|center_vertical"
-        android:text="Date" />
+        android:text="@string/debug_drawer_build_date" />
 
     <TextView
         android:id="@+id/debug_build_date"
@@ -98,80 +99,67 @@
         android:layout_columnSpan="2"
         android:layout_width="0dp"
         android:layout_gravity="start|fill_horizontal"
-        android:text="Device Information"
-        style="@style/Widget.App.DebugDrawer.Header"
-        />
+        android:text="@string/debug_drawer_device_title"
+        style="@style/Widget.App.DebugDrawer.Header" />
 
     <TextView
         android:layout_gravity="start|center_vertical"
-        android:text="Make"
-        style="@style/Widget.App.DebugDrawer.RowTitle"
-        />
+        android:text="@string/debug_drawer_device_make"
+        style="@style/Widget.App.DebugDrawer.RowTitle" />
     <TextView
         android:id="@+id/debug_device_make"
         android:layout_width="0dp"
         android:layout_gravity="start|center_vertical|fill_horizontal"
-        style="@style/Widget.App.DebugDrawer.RowValue"
-        />
+        style="@style/Widget.App.DebugDrawer.RowValue" />
 
     <TextView
         android:layout_gravity="start|center_vertical"
-        android:text="Model"
-        style="@style/Widget.App.DebugDrawer.RowTitle"
-        />
+        android:text="@string/debug_drawer_device_model"
+        style="@style/Widget.App.DebugDrawer.RowTitle" />
     <TextView
         android:id="@+id/debug_device_model"
         android:layout_width="0dp"
         android:layout_gravity="start|center_vertical|fill_horizontal"
-        style="@style/Widget.App.DebugDrawer.RowValue"
-        />
+        style="@style/Widget.App.DebugDrawer.RowValue" />
 
     <TextView
         android:layout_gravity="start|center_vertical"
-        android:text="Resolution"
-        style="@style/Widget.App.DebugDrawer.RowTitle"
-        />
+        android:text="@string/debug_drawer_device_resolution"
+        style="@style/Widget.App.DebugDrawer.RowTitle" />
     <TextView
         android:id="@+id/debug_device_resolution"
         android:layout_width="0dp"
         android:layout_gravity="start|center_vertical|fill_horizontal"
-        style="@style/Widget.App.DebugDrawer.RowValue"
-        />
+        style="@style/Widget.App.DebugDrawer.RowValue" />
 
     <TextView
         android:layout_gravity="start|center_vertical"
-        android:text="Density"
-        style="@style/Widget.App.DebugDrawer.RowTitle"
-        />
+        android:text="@string/debug_drawer_device_density"
+        style="@style/Widget.App.DebugDrawer.RowTitle" />
     <TextView
         android:id="@+id/debug_device_density"
         android:layout_width="0dp"
         android:layout_gravity="start|center_vertical|fill_horizontal"
-        style="@style/Widget.App.DebugDrawer.RowValue"
-        />
+        style="@style/Widget.App.DebugDrawer.RowValue" />
 
     <TextView
         android:layout_gravity="start|center_vertical"
-        android:text="Release"
-        style="@style/Widget.App.DebugDrawer.RowTitle"
-        />
+        android:text="@string/debug_drawer_device_release"
+        style="@style/Widget.App.DebugDrawer.RowTitle" />
     <TextView
         android:id="@+id/debug_device_release"
         android:layout_width="0dp"
         android:layout_gravity="start|center_vertical|fill_horizontal"
-        style="@style/Widget.App.DebugDrawer.RowValue"
-        />
+        style="@style/Widget.App.DebugDrawer.RowValue" />
 
     <TextView
         android:layout_gravity="start|center_vertical"
-        android:text="API"
-        style="@style/Widget.App.DebugDrawer.RowTitle"
-        />
+        android:text="@string/debug_drawer_device_api"
+        style="@style/Widget.App.DebugDrawer.RowTitle" />
     <TextView
         android:id="@+id/debug_device_api"
         android:layout_width="0dp"
         android:layout_gravity="start|center_vertical|fill_horizontal"
-        style="@style/Widget.App.DebugDrawer.RowValue"
-        />
+        style="@style/Widget.App.DebugDrawer.RowValue" />
 
 </GridLayout>

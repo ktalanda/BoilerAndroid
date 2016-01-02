@@ -2,5 +2,19 @@
 <resources>
     <string name="development_settings">Development Settings</string>
     <string name="debug_drawer_title">DEBUG</string>
-    <string name="debug_drawer_title_build">BUILD:</string>
+
+    <string name="debug_drawer_build_title">Build Information</string>
+    <string name="debug_drawer_build_name">Name</string>
+    <string name="debug_drawer_build_code">Code</string>
+    <string name="debug_drawer_build_sha">SHA</string>
+    <string name="debug_drawer_build_date">Date</string>
+
+    <string name="debug_drawer_device_title">Device Information</string>
+    <string name="debug_drawer_device_make">Make</string>
+    <string name="debug_drawer_device_model">Model</string>
+    <string name="debug_drawer_device_resolution">Resolution</string>
+    <string name="debug_drawer_device_density">Density</string>
+    <string name="debug_drawer_device_release">Release</string>
+    <string name="debug_drawer_device_api">API</string>
+
 </resources>
