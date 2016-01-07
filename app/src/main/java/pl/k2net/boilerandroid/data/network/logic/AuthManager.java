@@ -1,4 +1,4 @@
-package pl.k2net.boilerandroid.network.logic;
+package pl.k2net.boilerandroid.data.network.logic;
 
 import javax.inject.Inject;
 

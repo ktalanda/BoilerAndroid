@@ -4,10 +4,11 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import pl.k2net.boilerandroid.MyApplication;
+import pl.k2net.boilerandroid.di.module.NetworkModule;
 import pl.k2net.boilerandroid.di.module.UIModule;
 
 @Singleton
-@Component(modules = { UIModule.class })
+@Component(modules = { UIModule.class, NetworkModule.class })
 public interface ApplicationComponent extends ApplicationProvider {
 
     void inject(MyApplication app);
@@ -18,6 +19,7 @@ public interface ApplicationComponent extends ApplicationProvider {
             return DaggerApplicationComponent
                     .builder()
                     .uIModule(new UIModule())
+                    .networkModule(new NetworkModule())
                     .build();
         }
     }

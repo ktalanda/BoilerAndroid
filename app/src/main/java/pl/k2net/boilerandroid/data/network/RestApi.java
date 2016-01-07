@@ -1,14 +1,15 @@
-package pl.k2net.boilerandroid.network;
+package pl.k2net.boilerandroid.data.network;
 
 import pl.k2net.boilerandroid.BuildConfig;
 
 public interface RestApi {
 
-    String SCHEME = "http";
+    String SCHEME = "https";
     String HOST = BuildConfig.HOST;
 
     interface EndPoint {
-        String END_POINT = "";
+        String USERS = "users";
+        String PING = "ping";
     }
     interface Query {
         String QUERY = "";

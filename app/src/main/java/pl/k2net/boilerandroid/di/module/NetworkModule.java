@@ -5,6 +5,8 @@ import com.squareup.okhttp.OkHttpClient;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.k2net.boilerandroid.data.network.RestApi;
+import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 
@@ -17,12 +19,31 @@ public class NetworkModule {
     }
 
     @Provides
+    HttpUrl.Builder provideHttpUrlBuilder() {
+        return new HttpUrl.Builder();
+    }
+
+    @Provides
+    HttpUrl provideHttpUrl(HttpUrl.Builder builder) {
+        return builder
+                .scheme(RestApi.SCHEME)
+                .host(RestApi.HOST)
+                .build();
+    }
+
+    @Provides
+    OkHttpClient provideOkHttpClient() {
+        return new OkHttpClient();
+    }
+
+    @Provides
     Retrofit provideRetrofit(Retrofit.Builder builder,
                              HttpUrl baseUrl,
                              OkHttpClient okHttpClient) {
         return builder
                 .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
     }

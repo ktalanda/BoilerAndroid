@@ -1,4 +1,4 @@
-package pl.k2net.boilerandroid.network;
+package pl.k2net.boilerandroid.data.network;
 
 import com.squareup.okhttp.HttpUrl;
 

@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         bindContentView(R.layout.activity_main, savedInstanceState);
         setSupportActionBar(toolbar);
+
     }
 
     @Override

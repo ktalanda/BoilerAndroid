@@ -1,4 +1,4 @@
-package pl.k2net.boilerandroid.network;
+package pl.k2net.boilerandroid.data.network;
 
 import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.Response;
@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import pl.k2net.boilerandroid.network.logic.AuthManager;
+import pl.k2net.boilerandroid.data.network.logic.AuthManager;
 
 public class InterceptorImpl implements Interceptor {
 

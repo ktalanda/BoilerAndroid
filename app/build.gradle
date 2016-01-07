@@ -35,17 +35,18 @@ android {
 
         buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
         buildConfigField "String", "BUILD_TIME", "\"${buildTime}\""
+        buildConfigField "String", "HOST", "\"salty-everglades-3554.herokuapp.com\""
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "HOST", "\"\""
+
         }
         debug {
             applicationIdSuffix '.debug'
-            buildConfigField "String", "HOST", "\"\""
+
         }
     }
 
@@ -64,6 +65,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     apt (
             'org.projectlombok:lombok:1.12.6',
+            'org.parceler:parceler:1.0.4',
     )
     provided(
             'javax.annotation:jsr250-api:1.0',
@@ -79,6 +81,8 @@ dependencies {
             'io.reactivex:rxjava:1.1.0',
             'io.reactivex:rxandroid:1.1.0',
             'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2',
+            'org.parceler:parceler-api:1.0.4',
+            'com.squareup.retrofit:converter-gson:2.0.0-beta2',
     )
     testCompile(
             'junit:junit:4.12',
