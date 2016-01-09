@@ -2,9 +2,9 @@ package pl.k2net.boilerandroid.common.ui;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -39,6 +39,10 @@ public class ActivityViewHolder {
     TextView deviceRelease;
     @Bind(R.id.debug_device_api)
     TextView deviceApi;
+    @Bind(R.id.debug_network_schema)
+    TextView networkSchema;
+    @Bind(R.id.debug_network_host)
+    TextView networkHost;
 
     @Bind(R.id.debug_drawer)
     DrawerLayout drawerLayout;
@@ -53,36 +57,36 @@ public class ActivityViewHolder {
         if (savedInstanceState != null
                 && savedInstanceState
                 .getBoolean(AppContainerImpl.BUNDLE_DRAWER_OPEN)) {
-            drawerLayout.openDrawer(Gravity.RIGHT);
+            drawerLayout.openDrawer(GravityCompat.END);
         }
         DisplayMetrics displayMetrics = baseActivity.getResources()
                 .getDisplayMetrics();
-        String densityBucket = getDensityString(displayMetrics);
         buildName.setText(BuildConfig.VERSION_NAME);
-        buildCode.setText(Integer.toString(BuildConfig.VERSION_CODE));
+        buildCode.setText(
+                String.format(
+                        baseActivity.getString(R.string.debug_drawer_build_code_value),
+                        BuildConfig.VERSION_CODE));
         gitSha.setText(BuildConfig.GIT_SHA);
         buildDate.setText(BuildConfig.BUILD_TIME);
         deviceMake.setText(Build.MANUFACTURER);
         deviceModel.setText(Build.MODEL);
-        deviceResolution
-                .setText(displayMetrics.heightPixels
-                        + "x"
-                        + displayMetrics.widthPixels);
-        deviceDensity
-                .setText(displayMetrics.densityDpi
-                        + "dpi ("
-                        + densityBucket
-                        + ")");
+        deviceResolution.setText(
+                String.format(
+                        baseActivity.getString(R.string.debug_drawer_device_resolution_value),
+                        displayMetrics.heightPixels, displayMetrics.widthPixels));
+        deviceDensity.setText(
+                String.format(
+                        baseActivity.getString(R.string.debug_drawer_device_density_value),
+                        displayMetrics.densityDpi, getDensityString(displayMetrics)));
         deviceRelease.setText(Build.VERSION.RELEASE);
         deviceApi.setText(String.valueOf(Build.VERSION.SDK_INT));
+        networkSchema.setText(BuildConfig.SCHEMA);
+        networkHost.setText(BuildConfig.HOST);
         return this;
     }
 
     public boolean isDrawerOpen() {
-        if (drawerLayout != null) {
-            return drawerLayout.isDrawerOpen(Gravity.RIGHT);
-        }
-        return false;
+        return drawerLayout != null && drawerLayout.isDrawerOpen(GravityCompat.END);
     }
 
     private static String getDensityString(DisplayMetrics displayMetrics) {

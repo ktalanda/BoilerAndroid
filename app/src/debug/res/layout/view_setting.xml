@@ -162,4 +162,33 @@
         android:layout_gravity="start|center_vertical|fill_horizontal"
         style="@style/Widget.App.DebugDrawer.RowValue" />
 
+    <!-- NETWORK INFORMATION SECTION -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/debug_drawer_device_title"
+        style="@style/Widget.App.DebugDrawer.Header" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/debug_drawer_network_schema"
+        style="@style/Widget.App.DebugDrawer.RowTitle" />
+    <TextView
+        android:id="@+id/debug_network_schema"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/Widget.App.DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/debug_drawer_network_host"
+        style="@style/Widget.App.DebugDrawer.RowTitle" />
+    <TextView
+        android:id="@+id/debug_network_host"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/Widget.App.DebugDrawer.RowValue" />
+
 </GridLayout>

@@ -6,6 +6,7 @@
     <string name="debug_drawer_build_title">Build Information</string>
     <string name="debug_drawer_build_name">Name</string>
     <string name="debug_drawer_build_code">Code</string>
+    <string name="debug_drawer_build_code_value">%d</string>
     <string name="debug_drawer_build_sha">SHA</string>
     <string name="debug_drawer_build_date">Date</string>
 
@@ -13,8 +14,14 @@
     <string name="debug_drawer_device_make">Make</string>
     <string name="debug_drawer_device_model">Model</string>
     <string name="debug_drawer_device_resolution">Resolution</string>
+    <string name="debug_drawer_device_resolution_value">%1$dx%2$d</string>
     <string name="debug_drawer_device_density">Density</string>
+    <string name="debug_drawer_device_density_value">%1$ddpi (%2$s)</string>
     <string name="debug_drawer_device_release">Release</string>
     <string name="debug_drawer_device_api">API</string>
+
+    <string name="debug_drawer_network_title">Network Information</string>
+    <string name="debug_drawer_network_schema">Schema</string>
+    <string name="debug_drawer_network_host">Host</string>
 
 </resources>
