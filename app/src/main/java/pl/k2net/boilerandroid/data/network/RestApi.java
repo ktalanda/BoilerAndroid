@@ -9,6 +9,7 @@ public interface RestApi {
 
     interface EndPoint {
         String SIGNIN = "auth/signin";
+        String ITEM = "item";
         String USERS = "users";
         String MIRROR = "mirror";
         String PING = "ping";
