@@ -64,7 +64,8 @@ public class ActivityViewHolder {
         buildName.setText(BuildConfig.VERSION_NAME);
         buildCode.setText(
                 String.format(
-                        baseActivity.getString(R.string.debug_drawer_build_code_value),
+                        baseActivity
+                                .getString(R.string.debug_drawer_build_code_value),
                         BuildConfig.VERSION_CODE));
         gitSha.setText(BuildConfig.GIT_SHA);
         buildDate.setText(BuildConfig.BUILD_TIME);
@@ -76,7 +77,8 @@ public class ActivityViewHolder {
                         displayMetrics.heightPixels, displayMetrics.widthPixels));
         deviceDensity.setText(
                 String.format(
-                        baseActivity.getString(R.string.debug_drawer_device_density_value),
+                        baseActivity
+                                .getString(R.string.debug_drawer_device_density_value),
                         displayMetrics.densityDpi, getDensityString(displayMetrics)));
         deviceRelease.setText(Build.VERSION.RELEASE);
         deviceApi.setText(String.valueOf(Build.VERSION.SDK_INT));

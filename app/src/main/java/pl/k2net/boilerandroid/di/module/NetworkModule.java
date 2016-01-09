@@ -6,6 +6,8 @@ import com.squareup.okhttp.OkHttpClient;
 import dagger.Module;
 import dagger.Provides;
 import pl.k2net.boilerandroid.data.network.RestApi;
+import pl.k2net.boilerandroid.data.network.interceptor.AddCookiesInterceptor;
+import pl.k2net.boilerandroid.data.network.interceptor.ReceivedCookiesInterceptor;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
@@ -32,8 +34,12 @@ public class NetworkModule {
     }
 
     @Provides
-    OkHttpClient provideOkHttpClient() {
-        return new OkHttpClient();
+    OkHttpClient provideOkHttpClient(AddCookiesInterceptor addCookiesInterceptor,
+                                     ReceivedCookiesInterceptor receivedCookiesInterceptor) {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.interceptors().add(addCookiesInterceptor);
+        okHttpClient.interceptors().add(receivedCookiesInterceptor);
+        return okHttpClient;
     }
 
     @Provides

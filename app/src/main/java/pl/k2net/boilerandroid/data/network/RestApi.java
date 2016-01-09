@@ -4,11 +4,13 @@ import pl.k2net.boilerandroid.BuildConfig;
 
 public interface RestApi {
 
-    String SCHEME = "https";
+    String SCHEME = BuildConfig.SCHEMA;
     String HOST = BuildConfig.HOST;
 
     interface EndPoint {
+        String SIGNIN = "auth/signin";
         String USERS = "users";
+        String MIRROR = "mirror";
         String PING = "ping";
     }
     interface Query {

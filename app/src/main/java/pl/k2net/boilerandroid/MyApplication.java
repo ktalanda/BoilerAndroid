@@ -12,7 +12,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        applicationComponent = ApplicationComponent.Initializer.init();
+        applicationComponent = ApplicationComponent.Initializer.init(this);
         applicationComponent.inject(this);
     }
 

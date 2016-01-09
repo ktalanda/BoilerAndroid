@@ -13,7 +13,10 @@
     </module>
 
     <module name="TreeWalker">
-        <module name="LineLength" />
+        <module name="LineLength">
+            <property name="ignorePattern" value="^$" />
+            <property name="max" value="120" />
+        </module>
         <module name="MethodCount" />
         <module name="MethodLength" />
         <module name="OuterTypeNumber" />
