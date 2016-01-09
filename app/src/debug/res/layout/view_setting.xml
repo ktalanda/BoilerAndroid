@@ -168,7 +168,7 @@
         android:layout_columnSpan="2"
         android:layout_width="0dp"
         android:layout_gravity="start|fill_horizontal"
-        android:text="@string/debug_drawer_device_title"
+        android:text="@string/debug_drawer_network_title"
         style="@style/Widget.App.DebugDrawer.Header" />
 
     <TextView
@@ -187,6 +187,22 @@
         style="@style/Widget.App.DebugDrawer.RowTitle" />
     <TextView
         android:id="@+id/debug_network_host"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/Widget.App.DebugDrawer.RowValue" />
+
+    <!-- STORAGE INFORMATION SECTION -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/debug_drawer_storage_title"
+        style="@style/Widget.App.DebugDrawer.Header" />
+
+    <TextView
+        android:id="@+id/debug_storage_common"
+        android:layout_columnSpan="2"
         android:layout_width="0dp"
         android:layout_gravity="start|center_vertical|fill_horizontal"
         style="@style/Widget.App.DebugDrawer.RowValue" />

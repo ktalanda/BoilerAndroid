@@ -24,4 +24,6 @@
     <string name="debug_drawer_network_schema">Schema</string>
     <string name="debug_drawer_network_host">Host</string>
 
+    <string name="debug_drawer_storage_title">Storage Information</string>
+
 </resources>

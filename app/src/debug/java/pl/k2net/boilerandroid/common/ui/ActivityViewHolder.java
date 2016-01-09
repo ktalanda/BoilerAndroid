@@ -14,6 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import pl.k2net.boilerandroid.BuildConfig;
 import pl.k2net.boilerandroid.R;
+import pl.k2net.boilerandroid.data.storage.CommonStorage;
 
 public class ActivityViewHolder {
 
@@ -43,9 +44,14 @@ public class ActivityViewHolder {
     TextView networkSchema;
     @Bind(R.id.debug_network_host)
     TextView networkHost;
+    @Bind(R.id.debug_storage_common)
+    TextView storageCommon;
 
     @Bind(R.id.debug_drawer)
     DrawerLayout drawerLayout;
+
+    @Inject
+    CommonStorage storage;
 
     @Inject
     ActivityViewHolder() {
@@ -84,6 +90,7 @@ public class ActivityViewHolder {
         deviceApi.setText(String.valueOf(Build.VERSION.SDK_INT));
         networkSchema.setText(BuildConfig.SCHEMA);
         networkHost.setText(BuildConfig.HOST);
+        storageCommon.setText(storage.getAll().toString());
         return this;
     }
 
