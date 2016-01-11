@@ -31,7 +31,7 @@ public class CommonStorage {
                 .getStringSet(PREF_COOKIES, new HashSet<>());
     }
 
-    public Map<String, ?> getAll(){
+    public Map<String, ?> getAll() {
         return PreferenceManager.getDefaultSharedPreferences(context).getAll();
     }
 
