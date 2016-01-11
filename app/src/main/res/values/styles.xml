@@ -1,7 +1,6 @@
 <resources>
 
-    <style name="None">
-    </style>
+    <style name="None"></style>
 
     <!-- Base application theme. -->
     <style name="Theme.App" parent="Theme.AppCompat.Light.NoActionBar">
@@ -10,6 +9,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+        <item name="android:buttonStyle">@style/ButtonText</item>
     </style>
 
     <style name="Theme.App.NoActionBar">
@@ -20,5 +20,10 @@
     <style name="Theme.App.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.App.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ButtonText" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
 </resources>
