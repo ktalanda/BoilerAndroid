@@ -28,4 +28,13 @@ public class AuthClientImpl implements AuthClient {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io());
     }
+
+    @Override
+    public Observable<UserEntity> me() {
+        return retrofit.create(AuthClient.class)
+                .me()
+                .doOnError(throwable -> Timber.e(throwable.getMessage()))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io());
+    }
 }

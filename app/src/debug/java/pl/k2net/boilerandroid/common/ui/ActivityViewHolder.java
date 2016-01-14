@@ -14,9 +14,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import pl.k2net.boilerandroid.BuildConfig;
 import pl.k2net.boilerandroid.R;
-import pl.k2net.boilerandroid.data.storage.CommonStorage;
+import pl.k2net.boilerandroid.presentation.DebugDrawerPresenter;
 
-public class ActivityViewHolder {
+public class ActivityViewHolder implements DebugDrawerPresenter.ViewInterface {
 
     @Bind(R.id.debug_container)
     FrameLayout content;
@@ -51,7 +51,7 @@ public class ActivityViewHolder {
     DrawerLayout drawerLayout;
 
     @Inject
-    CommonStorage storage;
+    DebugDrawerPresenter presenter;
 
     @Inject
     ActivityViewHolder() {
@@ -90,7 +90,7 @@ public class ActivityViewHolder {
         deviceApi.setText(String.valueOf(Build.VERSION.SDK_INT));
         networkSchema.setText(BuildConfig.SCHEMA);
         networkHost.setText(BuildConfig.HOST);
-        storageCommon.setText(storage.getAll().toString());
+        presenter.setUpCommonStorage(this);
         return this;
     }
 
@@ -117,5 +117,10 @@ public class ActivityViewHolder {
             default:
                 return String.valueOf(displayMetrics.densityDpi);
         }
+    }
+
+    @Override
+    public void setCommonStorageInfo(String info) {
+        storageCommon.setText(info);
     }
 }

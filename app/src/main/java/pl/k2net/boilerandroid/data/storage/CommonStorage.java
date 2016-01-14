@@ -8,6 +8,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import rx.Observable;
+
 public class CommonStorage {
 
     private static final String PREF_COOKIES = "cookies";
@@ -31,8 +33,20 @@ public class CommonStorage {
                 .getStringSet(PREF_COOKIES, new HashSet<>());
     }
 
-    public Map<String, ?> getAll() {
-        return PreferenceManager.getDefaultSharedPreferences(context).getAll();
+    public Observable<Boolean> clearAuthCookies() {
+        return Observable.just(clearAuthCookiesAction());
+    }
+
+    public Observable<Map<String, ?>> getAll() {
+        return Observable.just(PreferenceManager.getDefaultSharedPreferences(context).getAll());
+    }
+
+    private boolean clearAuthCookiesAction() {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .remove(PREF_COOKIES)
+                .apply();
+        return true;
     }
 
 }

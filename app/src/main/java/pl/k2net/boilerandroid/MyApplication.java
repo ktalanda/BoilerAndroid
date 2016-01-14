@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import pl.k2net.boilerandroid.di.ApplicationComponent;
+import timber.log.Timber;
 
 public class MyApplication extends Application {
 
@@ -14,6 +15,9 @@ public class MyApplication extends Application {
         super.onCreate();
         applicationComponent = ApplicationComponent.Initializer.init(this);
         applicationComponent.inject(this);
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 
     public static ApplicationComponent component(Context context) {

@@ -13,6 +13,7 @@ public interface RestApi {
         String USERS = "users";
         String MIRROR = "mirror";
         String PING = "ping";
+        String ME = "users/me";
     }
     interface Query {
         String QUERY = "";
