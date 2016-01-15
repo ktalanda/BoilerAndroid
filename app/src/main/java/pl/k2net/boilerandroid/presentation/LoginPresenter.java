@@ -15,13 +15,14 @@ public class LoginPresenter {
     public void login(String username, String password, ViewInterface view) {
         signinUseCase.execute(username, password)
                 .subscribe(
-                        userEntity -> view.loginAction(true),
-                        throwable -> view.loginAction(false)
+                        userEntity -> view.loginAction(),
+                        throwable -> view.loginFailed(throwable.getMessage())
                 );
     }
 
     public interface ViewInterface {
-        void loginAction(boolean success);
+        void loginAction();
+        void loginFailed(String error);
     }
 
 }

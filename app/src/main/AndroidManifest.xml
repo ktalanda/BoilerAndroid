@@ -14,12 +14,15 @@
         <activity
             android:name=".main.ui.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.App.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.App.NoActionBar" />
         <activity
             android:name=".main.ui.LoginActivity"
             android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.App"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".main.ui.SplashActivity"
+            android:label="@string/title_activity_splash"
             android:theme="@style/Theme.App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

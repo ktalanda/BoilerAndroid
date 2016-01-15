@@ -1,5 +1,6 @@
 package pl.k2net.boilerandroid.main.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
@@ -9,14 +10,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 import pl.k2net.boilerandroid.R;
 import pl.k2net.boilerandroid.common.ui.BaseActivity;
+import pl.k2net.boilerandroid.data.entity.ItemEntity;
 import pl.k2net.boilerandroid.di.providers.SnackbarProvider;
+import pl.k2net.boilerandroid.di.qualifiers.LoginIntent;
 import pl.k2net.boilerandroid.presentation.MainPresenter;
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainPresenter.ViewInterface {
 
@@ -27,7 +33,8 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
 
     @Inject
     SnackbarProvider snackbarProvider;
-
+    @Inject @LoginIntent
+    Intent loginIntent;
     @Inject
     MainPresenter presenter;
 
@@ -37,6 +44,9 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
         super.onCreate(savedInstanceState);
         bindContentView(R.layout.activity_main, savedInstanceState);
         setUpToolbar();
+
+        presenter.getItemList(this);
+
     }
 
     @Override
@@ -79,6 +89,12 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
     public void signoutAction(boolean success) {
         if (success) {
             finish();
+            startActivity(loginIntent);
         }
+    }
+
+    @Override
+    public void listItem(List<ItemEntity> itemEntities) {
+        Timber.d(itemEntities.toString());
     }
 }

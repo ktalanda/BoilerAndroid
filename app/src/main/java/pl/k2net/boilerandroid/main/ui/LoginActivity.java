@@ -15,22 +15,24 @@ import butterknife.OnClick;
 import pl.k2net.boilerandroid.R;
 import pl.k2net.boilerandroid.common.ui.BaseActivity;
 import pl.k2net.boilerandroid.di.providers.SnackbarProvider;
+import pl.k2net.boilerandroid.di.qualifiers.MainIntent;
 import pl.k2net.boilerandroid.presentation.LoginPresenter;
 
 public class LoginActivity extends BaseActivity implements LoginPresenter.ViewInterface {
 
+    @Bind(R.id.login_main_layout)
+    CoordinatorLayout loginMainLayout;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.login_username)
     EditText username;
     @Bind(R.id.login_password)
     EditText password;
-    @Bind(R.id.login_main_layout)
-    CoordinatorLayout loginMainLayout;
 
     @Inject
     SnackbarProvider snackbarProvider;
-
+    @Inject @MainIntent
+    Intent mainIntent;
     @Inject
     LoginPresenter presenter;
 
@@ -40,7 +42,6 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.ViewIn
         initActivityComponent().inject(this);
         bindContentView(R.layout.activity_login, savedInstanceState);
         setSupportActionBar(toolbar);
-
     }
 
     @OnClick(R.id.login_submit)
@@ -50,12 +51,14 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.ViewIn
     }
 
     @Override
-    public void loginAction(boolean success) {
-        if (success) {
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        } else {
-            snackbarProvider.get(loginMainLayout, "LOGIN FAILED", Snackbar.LENGTH_SHORT).show();
-        }
+    public void loginAction() {
+        finish();
+        startActivity(mainIntent);
     }
+
+    @Override
+    public void loginFailed(String error) {
+        snackbarProvider.get(loginMainLayout, error, Snackbar.LENGTH_SHORT).show();
+    }
+
 }
