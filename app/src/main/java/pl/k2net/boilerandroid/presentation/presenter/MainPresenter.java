@@ -36,17 +36,17 @@ public class MainPresenter {
         );
     }
 
-    public interface ViewInterface {
-        void signoutAction(boolean success);
-
-        void listItem(List<ItemModel> items);
-    }
-
     private List<ItemModel> mapItemEntityList(List<ItemEntity> itemEntities) {
         List<ItemModel> result = new ArrayList<>();
         for (ItemEntity entity : itemEntities) {
             result.add(new ItemModel(entity));
         }
         return result;
+    }
+
+    public interface ViewInterface {
+        void signoutAction(boolean success);
+
+        void listItem(List<ItemModel> items);
     }
 }
