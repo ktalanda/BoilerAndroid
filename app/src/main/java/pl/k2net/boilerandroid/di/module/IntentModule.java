@@ -7,7 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 import pl.k2net.boilerandroid.di.qualifiers.LoginIntent;
 import pl.k2net.boilerandroid.di.qualifiers.MainIntent;
-import pl.k2net.boilerandroid.main.ui.LoginActivity;
+import pl.k2net.boilerandroid.login.ui.LoginActivity;
 import pl.k2net.boilerandroid.main.ui.MainActivity;
 
 @Module

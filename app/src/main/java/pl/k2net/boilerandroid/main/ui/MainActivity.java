@@ -18,10 +18,10 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import pl.k2net.boilerandroid.R;
 import pl.k2net.boilerandroid.common.ui.BaseActivity;
-import pl.k2net.boilerandroid.data.entity.ItemEntity;
 import pl.k2net.boilerandroid.di.providers.SnackbarProvider;
 import pl.k2net.boilerandroid.di.qualifiers.LoginIntent;
-import pl.k2net.boilerandroid.presentation.MainPresenter;
+import pl.k2net.boilerandroid.presentation.model.ItemModel;
+import pl.k2net.boilerandroid.presentation.presenter.MainPresenter;
 import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainPresenter.ViewInterface {
@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
 
     @Inject
     SnackbarProvider snackbarProvider;
-    @Inject @LoginIntent
+    @LoginIntent
     Intent loginIntent;
     @Inject
     MainPresenter presenter;
@@ -44,8 +44,6 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
         super.onCreate(savedInstanceState);
         bindContentView(R.layout.activity_main, savedInstanceState);
         setUpToolbar();
-
-        presenter.getItemList(this);
 
     }
 
@@ -94,7 +92,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
     }
 
     @Override
-    public void listItem(List<ItemEntity> itemEntities) {
-        Timber.d(itemEntities.toString());
+    public void listItem(List<ItemModel> itemModels) {
+        Timber.d(itemModels.toString());
     }
 }

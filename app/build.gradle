@@ -84,6 +84,9 @@ dependencies {
             'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2',
             'org.parceler:parceler-api:1.0.4',
             'com.squareup.retrofit:converter-gson:2.0.0-beta2',
+
+            'com.android.support:recyclerview-v7:23.1.0',
+            'com.android.support:cardview-v7:23.1.0',
     )
     testCompile(
             'junit:junit:4.12',

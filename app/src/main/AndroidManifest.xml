@@ -16,12 +16,12 @@
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.App.NoActionBar" />
         <activity
-            android:name=".main.ui.LoginActivity"
+            android:name=".login.ui.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.App"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".main.ui.SplashActivity"
+            android:name=".splash.ui.SplashActivity"
             android:label="@string/title_activity_splash"
             android:theme="@style/Theme.App">
             <intent-filter>

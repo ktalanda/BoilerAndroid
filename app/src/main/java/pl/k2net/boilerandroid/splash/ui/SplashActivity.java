@@ -1,4 +1,4 @@
-package pl.k2net.boilerandroid.main.ui;
+package pl.k2net.boilerandroid.splash.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import pl.k2net.boilerandroid.R;
 import pl.k2net.boilerandroid.common.ui.BaseActivity;
 import pl.k2net.boilerandroid.di.qualifiers.LoginIntent;
 import pl.k2net.boilerandroid.di.qualifiers.MainIntent;
-import pl.k2net.boilerandroid.presentation.SplashPresenter;
+import pl.k2net.boilerandroid.presentation.presenter.SplashPresenter;
 
 public class SplashActivity extends BaseActivity implements SplashPresenter.ViewInterface {
 

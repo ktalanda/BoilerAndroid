@@ -1,4 +1,4 @@
-package pl.k2net.boilerandroid.main.ui;
+package pl.k2net.boilerandroid.login.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import pl.k2net.boilerandroid.R;
 import pl.k2net.boilerandroid.common.ui.BaseActivity;
 import pl.k2net.boilerandroid.di.providers.SnackbarProvider;
 import pl.k2net.boilerandroid.di.qualifiers.MainIntent;
-import pl.k2net.boilerandroid.presentation.LoginPresenter;
+import pl.k2net.boilerandroid.presentation.presenter.LoginPresenter;
 
 public class LoginActivity extends BaseActivity implements LoginPresenter.ViewInterface {
 

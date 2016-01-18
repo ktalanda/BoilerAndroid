@@ -1,5 +1,7 @@
-package pl.k2net.boilerandroid.presentation;
+package pl.k2net.boilerandroid.presentation.presenter;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -7,6 +9,7 @@ import javax.inject.Inject;
 import pl.k2net.boilerandroid.data.entity.ItemEntity;
 import pl.k2net.boilerandroid.domain.usecase.GetItemListUseCase;
 import pl.k2net.boilerandroid.domain.usecase.SignoutUseCase;
+import pl.k2net.boilerandroid.presentation.model.ItemModel;
 import timber.log.Timber;
 
 public class MainPresenter {
@@ -28,13 +31,22 @@ public class MainPresenter {
 
     public void getItemList(ViewInterface view) {
         getItemListUseCase.execute().subscribe(
-                listResponse -> view.listItem(listResponse.body()),
+                listResponse -> view.listItem(mapItemEntityList(listResponse.body())),
                 throwable -> Timber.e(throwable.getMessage())
         );
     }
 
     public interface ViewInterface {
         void signoutAction(boolean success);
-        void listItem(List<ItemEntity> itemEntities);
+
+        void listItem(List<ItemModel> items);
+    }
+
+    private List<ItemModel> mapItemEntityList(List<ItemEntity> itemEntities) {
+        List<ItemModel> result = new ArrayList<>();
+        for (ItemEntity entity : itemEntities) {
+            result.add(new ItemModel(entity));
+        }
+        return result;
     }
 }

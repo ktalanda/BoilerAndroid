@@ -1,4 +1,4 @@
-package pl.k2net.boilerandroid.presentation;
+package pl.k2net.boilerandroid.presentation.presenter;
 
 import javax.inject.Inject;
 
