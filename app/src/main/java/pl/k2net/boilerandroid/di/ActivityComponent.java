@@ -8,7 +8,7 @@ import pl.k2net.boilerandroid.di.scope.PerActivity;
         dependencies = ApplicationComponent.class,
         modules = { }
 )
-public interface ActivityComponent extends ActivityInjector {
+public interface ActivityComponent extends ActivityInjector, FragmentInjector {
     final class Initializer {
         private Initializer() { }
         public static ActivityComponent init(ApplicationComponent component) {
