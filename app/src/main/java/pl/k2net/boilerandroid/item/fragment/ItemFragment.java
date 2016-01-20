@@ -24,6 +24,7 @@ public class ItemFragment extends BaseFragment implements ItemPresenter.ViewInte
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         fragmentInjector().inject(this);
+        presenter.bind(this);
         super.onCreate(savedInstanceState);
     }
 
@@ -36,7 +37,6 @@ public class ItemFragment extends BaseFragment implements ItemPresenter.ViewInte
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.bind(this);
         presenter.getItemList();
     }
 

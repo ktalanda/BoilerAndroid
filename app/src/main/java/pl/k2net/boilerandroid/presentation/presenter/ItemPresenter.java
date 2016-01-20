@@ -8,29 +8,19 @@ import pl.k2net.boilerandroid.domain.usecase.GetItemListUseCase;
 import pl.k2net.boilerandroid.domain.model.ItemModel;
 import timber.log.Timber;
 
-public class ItemPresenter {
+public class ItemPresenter extends BasePresenter<ItemPresenter.ViewInterface> {
 
     @Inject
     GetItemListUseCase getItemListUseCase;
-
-    private ViewInterface view;
 
     @Inject
     ItemPresenter() {
     }
 
-    public void bind(ViewInterface view) {
-        if (this.view != null) {
-            throw new RuntimeException("Concurrent view bind! Unexpected, second instance of view occurred"
-                    + " before first one unbind.");
-        }
-        this.view = view;
-    }
-
     public void getItemList() {
         getItemListUseCase.execute()
                 .subscribe(
-                        view::showItemList,
+                        getView()::showItemList,
                         throwable -> Timber.wtf("ERROR")
                 );
     }

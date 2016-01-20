@@ -7,7 +7,6 @@ import pl.k2net.boilerandroid.data.entity.ItemEntity;
 @Data
 @AllArgsConstructor
 public class ItemModel {
-    String name;
 
     String name;
 

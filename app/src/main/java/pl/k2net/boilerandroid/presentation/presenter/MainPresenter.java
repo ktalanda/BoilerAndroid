@@ -2,24 +2,20 @@ package pl.k2net.boilerandroid.presentation.presenter;
 
 import javax.inject.Inject;
 
-import pl.k2net.boilerandroid.domain.usecase.GetItemListUseCase;
 import pl.k2net.boilerandroid.domain.usecase.SignoutUseCase;
 
-public class MainPresenter {
+public class MainPresenter extends BasePresenter<MainPresenter.ViewInterface> {
 
     @Inject
     SignoutUseCase signoutUseCase;
 
     @Inject
-    GetItemListUseCase getItemListUseCase;
-
-    @Inject
     MainPresenter() {
     }
 
-    public void signout(ViewInterface view) {
+    public void signout() {
         signoutUseCase.execute()
-                .subscribe(view::signoutAction);
+                .subscribe(getView()::signoutAction);
     }
 
     public interface ViewInterface {

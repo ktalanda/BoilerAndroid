@@ -4,7 +4,7 @@ import javax.inject.Inject;
 
 import pl.k2net.boilerandroid.domain.usecase.SigninUseCase;
 
-public class LoginPresenter {
+public class LoginPresenter extends BasePresenter<LoginPresenter.ViewInterface> {
     @Inject
     SigninUseCase signinUseCase;
 
@@ -12,11 +12,11 @@ public class LoginPresenter {
     LoginPresenter() {
     }
 
-    public void login(String username, String password, ViewInterface view) {
+    public void login(String username, String password) {
         signinUseCase.execute(username, password)
                 .subscribe(
-                        userEntity -> view.loginAction(),
-                        throwable -> view.loginFailed(throwable.getMessage())
+                        userEntity -> getView().loginAction(),
+                        throwable -> getView().loginFailed(throwable.getMessage())
                 );
     }
 

@@ -4,7 +4,7 @@ import javax.inject.Inject;
 
 import pl.k2net.boilerandroid.domain.usecase.AuthenticateUseCase;
 
-public class SplashPresenter {
+public class SplashPresenter extends BasePresenter<SplashPresenter.ViewInterface> {
     @Inject
     AuthenticateUseCase authenticateUseCase;
 
@@ -12,18 +12,11 @@ public class SplashPresenter {
     SplashPresenter() {
     }
 
-    public void authenticate(ViewInterface view) {
+    public void authenticate() {
         authenticateUseCase.execute()
                 .subscribe(
-                        userEntity -> {
-                            if (userEntity == null) {
-                                view.authenticateAction(false);
-                            } else {
-                                view.authenticateAction(true);
-                            }
-                        },
-                        throwable -> view.authenticateAction(false)
-                );
+                        userEntity -> getView().authenticateAction(userEntity != null),
+                        throwable -> getView().authenticateAction(false));
     }
 
     public interface ViewInterface {

@@ -23,9 +23,10 @@ public class SplashActivity extends BaseActivity implements SplashPresenter.View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         initActivityComponent().inject(this);
+        presenter.bind(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        presenter.authenticate(this);
+        presenter.authenticate();
     }
 
     @Override

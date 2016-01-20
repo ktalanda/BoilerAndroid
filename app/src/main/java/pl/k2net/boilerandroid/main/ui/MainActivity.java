@@ -42,6 +42,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         initActivityComponent().inject(this);
+        presenter.bind(this);
         super.onCreate(savedInstanceState);
         bindContentView(R.layout.activity_main, savedInstanceState);
         setUpToolbar();
@@ -76,7 +77,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
 
     @OnClick(R.id.logout)
     public void onLogoutClick(View view) {
-        presenter.signout(this);
+        presenter.signout();
     }
 
     @Override

@@ -38,8 +38,9 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.ViewIn
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         initActivityComponent().inject(this);
+        presenter.bind(this);
+        super.onCreate(savedInstanceState);
         bindContentView(R.layout.activity_login, savedInstanceState);
         setSupportActionBar(toolbar);
     }
@@ -47,7 +48,7 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.ViewIn
     @OnClick(R.id.login_submit)
     public void onSubmitAction(View view) {
         String usernameCredentials = username.getText().toString();
-        presenter.login(usernameCredentials, "1qazse432", this);
+        presenter.login(usernameCredentials, "1qazse432");
     }
 
     @Override
