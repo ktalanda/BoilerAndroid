@@ -8,8 +8,8 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:orientation="horizontal">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -23,32 +23,30 @@
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/Theme.App.PopupOverlay" />
 
+
         </android.support.design.widget.AppBarLayout>
 
-        <include layout="@layout/content_main" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@android:drawable/ic_dialog_email" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main_fragment"
+            android:paddingTop="?attr/actionBarSize" />
 
     </android.support.design.widget.CoordinatorLayout>
 
     <FrameLayout
         android:id="@+id/main_menu_frame"
         android:layout_width="300dp"
-        android:background="@android:color/black"
         android:layout_height="match_parent"
-        android:layout_gravity="start">
+        android:layout_gravity="start"
+        android:background="@android:color/black">
+
         <Button
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logout"
-            android:layout_gravity="bottom"/>
-        </FrameLayout>
+            android:layout_gravity="bottom"
+            android:text="Logout" />
+    </FrameLayout>
 
 </android.support.v4.widget.DrawerLayout>

@@ -2,15 +2,12 @@ package pl.k2net.boilerandroid.main.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -20,9 +17,9 @@ import pl.k2net.boilerandroid.R;
 import pl.k2net.boilerandroid.common.ui.BaseActivity;
 import pl.k2net.boilerandroid.di.providers.SnackbarProvider;
 import pl.k2net.boilerandroid.di.qualifiers.LoginIntent;
-import pl.k2net.boilerandroid.presentation.model.ItemModel;
+import pl.k2net.boilerandroid.item.adapter.ItemAdapter;
+import pl.k2net.boilerandroid.item.fragment.ItemFragment;
 import pl.k2net.boilerandroid.presentation.presenter.MainPresenter;
-import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainPresenter.ViewInterface {
 
@@ -32,8 +29,12 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
     DrawerLayout drawer;
 
     @Inject
+    ItemAdapter adapter;
+    @Inject
     SnackbarProvider snackbarProvider;
+
     @LoginIntent
+    @Inject
     Intent loginIntent;
     @Inject
     MainPresenter presenter;
@@ -45,6 +46,10 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
         bindContentView(R.layout.activity_main, savedInstanceState);
         setUpToolbar();
 
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_fragment, new ItemFragment())
+                .commit();
     }
 
     @Override
@@ -63,19 +68,10 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setHomeButtonEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_action_menu);
         }
-    }
-
-    @OnClick(R.id.fab)
-    public void onFabClick(View view) {
-        snackbarProvider
-                .get(view, "test", Snackbar.LENGTH_SHORT)
-                .setAction("Action", null)
-                .show();
     }
 
     @OnClick(R.id.logout)
@@ -89,10 +85,5 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
             finish();
             startActivity(loginIntent);
         }
-    }
-
-    @Override
-    public void listItem(List<ItemModel> itemModels) {
-        Timber.d(itemModels.toString());
     }
 }
