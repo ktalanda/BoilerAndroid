@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -19,6 +21,8 @@ import pl.k2net.boilerandroid.di.providers.SnackbarProvider;
 import pl.k2net.boilerandroid.di.qualifiers.LoginIntent;
 import pl.k2net.boilerandroid.item.adapter.ItemAdapter;
 import pl.k2net.boilerandroid.item.fragment.ItemFragment;
+import pl.k2net.boilerandroid.main.ui.menu.DrawerMenu;
+import pl.k2net.boilerandroid.main.ui.menu.DrawerMenuAdapter;
 import pl.k2net.boilerandroid.presentation.presenter.MainPresenter;
 
 public class MainActivity extends BaseActivity implements MainPresenter.ViewInterface {
@@ -27,11 +31,17 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
     Toolbar toolbar;
     @Bind(R.id.drawer)
     DrawerLayout drawer;
+    @Bind(R.id.drawer_list)
+    RecyclerView drawerList;
 
     @Inject
     ItemAdapter adapter;
     @Inject
     SnackbarProvider snackbarProvider;
+    @Inject
+    Provider<RecyclerView.LayoutManager> linearLayoutManagerProvider;
+    @Inject
+    DrawerMenuAdapter drawerMenuAdapter;
 
     @LoginIntent
     @Inject
@@ -51,6 +61,12 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
                 .beginTransaction()
                 .replace(R.id.main_fragment, new ItemFragment())
                 .commit();
+
+        for(DrawerMenu mainMenu : DrawerMenu.values()){
+            drawerMenuAdapter.addItem(mainMenu);
+        }
+        drawerList.setLayoutManager(linearLayoutManagerProvider.get());
+        drawerList.setAdapter(drawerMenuAdapter);
     }
 
     @Override
