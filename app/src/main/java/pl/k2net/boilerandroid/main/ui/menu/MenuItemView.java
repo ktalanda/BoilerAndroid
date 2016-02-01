@@ -6,6 +6,7 @@ public interface MenuItemView {
 
     @StringRes
     int icon();
+
     @StringRes
     int label();
 }

@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
                 .replace(R.id.main_fragment, new ItemFragment())
                 .commit();
 
-        for(DrawerMenu mainMenu : DrawerMenu.values()){
+        for (DrawerMenu mainMenu : DrawerMenu.values()) {
             drawerMenuAdapter.addItem(mainMenu);
         }
         drawerList.setLayoutManager(linearLayoutManagerProvider.get());

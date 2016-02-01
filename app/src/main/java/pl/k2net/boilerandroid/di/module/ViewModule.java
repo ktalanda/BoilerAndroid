@@ -33,6 +33,10 @@ public class ViewModule {
     @DrawerItemView
     @Provides
     View provideDrawerItemView(LayoutInflater layoutInflater) {
-        return layoutInflater.inflate(R.layout.view_drawer_item, (ViewGroup) baseActivity.findViewById(R.id.main_menu_frame), false);
+        return layoutInflater
+                .inflate(
+                        R.layout.view_drawer_item,
+                        (ViewGroup) baseActivity.findViewById(R.id.main_menu_frame),
+                        false);
     }
 }
