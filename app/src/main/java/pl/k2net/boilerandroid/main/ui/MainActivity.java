@@ -23,6 +23,7 @@ import pl.k2net.boilerandroid.item.adapter.ItemAdapter;
 import pl.k2net.boilerandroid.item.fragment.ItemFragment;
 import pl.k2net.boilerandroid.main.ui.menu.DrawerMenu;
 import pl.k2net.boilerandroid.main.ui.menu.DrawerMenuAdapter;
+import pl.k2net.boilerandroid.main.ui.menu.view.DrawerHeaderView;
 import pl.k2net.boilerandroid.presentation.presenter.MainPresenter;
 
 public class MainActivity extends BaseActivity implements MainPresenter.ViewInterface {
@@ -65,6 +66,12 @@ public class MainActivity extends BaseActivity implements MainPresenter.ViewInte
         for (DrawerMenu mainMenu : DrawerMenu.values()) {
             drawerMenuAdapter.addItem(mainMenu);
         }
+        drawerMenuAdapter.setHeaderView(new DrawerHeaderView() {
+            @Override
+            public int username() {
+                return R.string.app_name;
+            }
+        });
         drawerList.setLayoutManager(linearLayoutManagerProvider.get());
         drawerList.setAdapter(drawerMenuAdapter);
     }

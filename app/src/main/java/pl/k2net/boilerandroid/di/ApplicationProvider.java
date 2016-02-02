@@ -8,7 +8,7 @@ import java.util.List;
 import pl.k2net.boilerandroid.common.ui.AppContainer;
 import pl.k2net.boilerandroid.di.qualifiers.LoginIntent;
 import pl.k2net.boilerandroid.di.qualifiers.MainIntent;
-import pl.k2net.boilerandroid.main.ui.menu.MenuItemView;
+import pl.k2net.boilerandroid.main.ui.menu.view.DrawerItemView;
 import retrofit.Retrofit;
 
 public interface ApplicationProvider {
@@ -17,5 +17,5 @@ public interface ApplicationProvider {
     Context provideContext();
     @LoginIntent Intent provideLoginIntent();
     @MainIntent Intent provideMainIntent();
-    List<MenuItemView> provideDrawerList();
+    List<DrawerItemView> provideDrawerList();
 }

@@ -10,7 +10,8 @@ import dagger.Module;
 import dagger.Provides;
 import pl.k2net.boilerandroid.R;
 import pl.k2net.boilerandroid.common.ui.BaseActivity;
-import pl.k2net.boilerandroid.di.qualifiers.DrawerItemView;
+import pl.k2net.boilerandroid.di.qualifiers.DrawerHeaderViewQualifier;
+import pl.k2net.boilerandroid.di.qualifiers.DrawerItemViewQualifier;
 
 @Module
 public class ViewModule {
@@ -30,12 +31,22 @@ public class ViewModule {
         return LayoutInflater.from(baseActivity);
     }
 
-    @DrawerItemView
+    @DrawerItemViewQualifier
     @Provides
     View provideDrawerItemView(LayoutInflater layoutInflater) {
         return layoutInflater
                 .inflate(
                         R.layout.view_drawer_item,
+                        (ViewGroup) baseActivity.findViewById(R.id.main_menu_frame),
+                        false);
+    }
+
+    @DrawerHeaderViewQualifier
+    @Provides
+    View provideDrawerHeaderView(LayoutInflater layoutInflater) {
+        return layoutInflater
+                .inflate(
+                        R.layout.view_drawer_header,
                         (ViewGroup) baseActivity.findViewById(R.id.main_menu_frame),
                         false);
     }

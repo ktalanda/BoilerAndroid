@@ -1,8 +1,8 @@
-package pl.k2net.boilerandroid.main.ui.menu;
+package pl.k2net.boilerandroid.main.ui.menu.view;
 
 import android.support.annotation.StringRes;
 
-public interface MenuItemView {
+public interface DrawerItemView {
 
     @StringRes
     int icon();

@@ -8,36 +8,83 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-import pl.k2net.boilerandroid.common.ui.CommonViewHolder;
+import lombok.Setter;
+import pl.k2net.boilerandroid.main.ui.menu.view.DrawerHeaderView;
+import pl.k2net.boilerandroid.main.ui.menu.view.DrawerItemView;
+import pl.k2net.boilerandroid.main.ui.menu.viewholder.CommonMenuViewHolder;
+import pl.k2net.boilerandroid.main.ui.menu.viewholder.DrawerHeaderViewHolder;
+import pl.k2net.boilerandroid.main.ui.menu.viewholder.DrawerItemViewHolder;
 
-public class DrawerMenuAdapter extends RecyclerView.Adapter<CommonViewHolder<?>> {
+public class DrawerMenuAdapter extends RecyclerView.Adapter<CommonMenuViewHolder<?>> {
+
+    public static final int HEADER = 0;
+    public static final int ITEM = 1;
+
+    @Setter
+    DrawerHeaderView headerView;
 
     @Inject
-    Provider<DrawerViewHolder> drawerViewHolderProvider;
+    Provider<DrawerItemViewHolder> drawerViewHolderProvider;
 
     @Inject
-    List<MenuItemView> drawerItemViewList;
+    Provider<DrawerHeaderViewHolder> headerViewHolderProvider;
+
+    @Inject
+    List<DrawerItemView> drawerItemViewList;
 
     @Inject
     DrawerMenuAdapter() {
     }
 
     @Override
-    public CommonViewHolder<?> onCreateViewHolder(ViewGroup parent, int viewType) {
-        return drawerViewHolderProvider.get();
+    public CommonMenuViewHolder<?> onCreateViewHolder(ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case HEADER:
+                return createHeaderViewHolder();
+            case ITEM:
+                return createItemViewHolder();
+            default:
+                throw new IllegalArgumentException("Type " + viewType + " is not supported");
+        }
     }
 
     @Override
-    public void onBindViewHolder(CommonViewHolder<?> holder, int position) {
-        ((DrawerViewHolder) holder).bind(drawerItemViewList.get(position));
+    public void onBindViewHolder(CommonMenuViewHolder<?> holder, int position) {
+        if (HEADER == getItemViewType(position)) {
+            DrawerHeaderViewHolder headerViewHolder = (DrawerHeaderViewHolder) holder;
+            headerViewHolder.bind(headerView);
+        } else {
+            DrawerItemViewHolder itemViewHolder = (DrawerItemViewHolder) holder;
+            itemViewHolder.bind(drawerItemViewList.get(position - (isHeader() ? 1 : 0)));
+        }
     }
 
     @Override
     public int getItemCount() {
-        return drawerItemViewList.size();
+        return drawerItemViewList.size() + (isHeader() ? 1 : 0);
     }
 
-    public void addItem(MenuItemView itemView) {
+    @Override
+    public int getItemViewType(int position) {
+        if (isHeader() && position == 0) {
+            return HEADER;
+        }
+        return ITEM;
+    }
+
+    public void addItem(DrawerItemView itemView) {
         drawerItemViewList.add(itemView);
+    }
+
+    private boolean isHeader() {
+        return headerView != null;
+    }
+
+    private DrawerItemViewHolder createItemViewHolder() {
+        return drawerViewHolderProvider.get();
+    }
+
+    private DrawerHeaderViewHolder createHeaderViewHolder() {
+        return headerViewHolderProvider.get();
     }
 }
