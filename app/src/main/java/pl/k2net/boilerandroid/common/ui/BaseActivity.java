@@ -34,7 +34,7 @@ public class BaseActivity extends AppCompatActivity
         if (activityComponent == null) {
             activityComponent = ActivityComponent
                     .Initializer
-                    .init(MyApplication.component(this));
+                    .init(MyApplication.component(this), this);
         }
         return activityComponent;
     }

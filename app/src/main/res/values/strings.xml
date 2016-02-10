@@ -7,4 +7,11 @@
     <string name="login_password">Password</string>
     <string name="login_submit">LOGIN</string>
     <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="drawer_menu_dashboard">DASHBOARD</string>
+    <string name="drawer_menu_dashboard_icon">&#xf0e4;</string>
+    <string name="drawer_menu_settings">SETTINGS</string>
+    <string name="drawer_menu_settings_icon">&#xf0ad;</string>
+    <string name="font_awesome">fontawesome-webfont.ttf</string>
+
 </resources>
